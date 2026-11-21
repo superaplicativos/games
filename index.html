@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXUS GAMER — Loja Oficial PS5 | GTA VI por R$ 12.999,90</title>
+<meta name="description" content="A loja gamer mais épica do Brasil. PlayStation 5, jogos de PS5, controles e acessórios — GTA VI por apenas R$ 12.999,90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05030d;
+    --bg-2: #0b0720;
+    --bg-3: #160b34;
+    --pink: #ff2d87;
+    --pink-2: #ff5cb3;
+    --cyan: #00e8ff;
+    --purple: #9b3dff;
+    --orange: #ff8a1e;
+    --yellow: #ffe600;
+    --green: #2bff88;
+    --white: #ffffff;
+    --muted: #a89bd1;
+    --card: rgba(20,12,48,0.65);
+    --card-border: rgba(255,45,135,0.25);
+    --shadow-pink: 0 0 24px rgba(255,45,135,0.45);
+    --shadow-cyan: 0 0 24px rgba(0,232,255,0.45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(ellipse at top, var(--bg-3) 0%, var(--bg-2) 35%, var(--bg) 100%);
+    color: var(--white);
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+  /* Animated backdrop */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,45,135,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,232,255,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+  }
+  .bg-blobs {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  }
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55;
+    animation: float 18s ease-in-out infinite;
+  }
+  .blob.b1 { width: 480px; height: 480px; left: -120px; top: -120px; background: var(--pink); }
+  .blob.b2 { width: 520px; height: 520px; right: -160px; top: 10%; background: var(--purple); animation-delay: -6s; }
+  .blob.b3 { width: 600px; height: 600px; left: 25%; bottom: -260px; background: var(--cyan); opacity: 0.35; animation-delay: -12s; }
+  @keyframes float {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(40px,-30px) scale(1.08); }
+  }
+  /* HEADER */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: linear-gradient(180deg, rgba(5,3,13,0.92), rgba(5,3,13,0.65));
+    border-bottom: 1px solid rgba(255,45,135,0.25);
+    box-shadow: 0 6px 32px rgba(0,0,0,0.5);
+  }
+  .nav {
+    max-width: 1400px; margin: 0 auto; padding: 14px 22px;
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 22px rgba(255,45,135,0.6);
+    flex: 0 0 auto;
+  }
+  .logo span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
+  nav.links { display: flex; gap: 18px; flex: 1 1 auto; flex-wrap: wrap; }
+  nav.links a {
+    color: var(--muted); text-decoration: none; font-weight: 600;
+    font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; font-size: 1.02rem;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+  nav.links a:hover { color: var(--cyan); text-shadow: 0 0 12px var(--cyan); }
+  .search {
+    flex: 1 1 220px; min-width: 180px; position: relative;
+  }
+  .search input {
+    width: 100%; padding: 9px 14px; border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,232,255,0.25);
+    color: var(--white); font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search input:focus { border-color: var(--cyan); box-shadow: var(--shadow-cyan); }
+  .cart-btn {
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: var(--white); border: none; cursor: pointer;
+    padding: 9px 18px; border-radius: 10px;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 1px; transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: var(--shadow-pink);
+    flex: 0 0 auto;
+  }
+  .cart-btn:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(255,45,135,0.7); }
+  .cart-count {
+    display: inline-block; min-width: 22px; height: 22px; padding: 0 6px;
+    background: var(--yellow); color: #000; border-radius: 11px; margin-left: 8px;
+    font-family: 'Orbitron', sans-serif; font-size: 0.8rem; line-height: 22px; font-weight: 900;
+  }
+
+  /* HERO BANNER */
+  .hero {
+    position: relative; max-width: 1400px; margin: 28px auto; padding: 0 22px;
+  }
+  .hero-inner {
+    position: relative; overflow: hidden; border-radius: 24px;
+    background: linear-gradient(120deg, #1a0233 0%, #2b0540 40%, #4a0a3a 70%, #6b0e22 100%);
+    box-shadow: 0 20px 60px rgba(255,45,135,0.3), inset 0 0 80px rgba(155,61,255,0.2);
+    padding: clamp(22px, 5vw, 56px);
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center;
+    border: 1px solid rgba(255,138,30,0.35);
+  }
+  .hero-inner::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,45,135,0.5), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(255,230,0,0.25), transparent 45%);
+    mix-blend-mode: screen;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-kicker {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: linear-gradient(90deg, var(--pink), var(--orange));
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 2px;
+    margin-bottom: 14px; box-shadow: 0 0 18px rgba(255,45,135,0.6);
+  }
+  .hero-title {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: clamp(2.1rem, 6.5vw, 4.2rem); line-height: 1; letter-spacing: 1px;
+    background: linear-gradient(180deg, #fff 0%, #ffd6a8 50%, #ff8a1e 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 40px rgba(255,138,30,0.45);
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: rgba(255,255,255,0.85); margin-bottom: 18px;
+  }
+  .hero-price {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px;
+  }
+  .hero-price .hp-now {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 3rem); color: var(--yellow);
+    text-shadow: 0 0 24px rgba(255,230,0,0.6);
+  }
+  .hero-price .hp-old {
+    text-decoration: line-through; color: rgba(255,255,255,0.55); font-size: 1.1rem;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--pink), var(--orange));
+    color: var(--white); border: none; cursor: pointer;
+    padding: 14px 28px; border-radius: 12px;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1.5px;
+    box-shadow: 0 0 30px rgba(255,45,135,0.55);
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 44px rgba(255,138,30,0.8); }
+  .btn-ghost {
+    background: rgba(0,232,255,0.08); color: var(--cyan); cursor: pointer;
+    border: 1px solid var(--cyan); padding: 14px 24px; border-radius: 12px;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1.5px;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(0,232,255,0.18); box-shadow: var(--shadow-cyan); }
+  .hero-media {
+    position: relative; z-index: 2;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 50px rgba(255,138,30,0.4);
+    aspect-ratio: 4/3;
+  }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-media::after {
+    content: 'GTA VI'; position: absolute; bottom: 14px; left: 14px;
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem;
+    color: var(--white); text-shadow: 0 0 16px rgba(0,0,0,0.9);
+    padding: 6px 12px; background: rgba(0,0,0,0.55); border-radius: 8px; letter-spacing: 2px;
+  }
+
+  /* TICKER */
+  .ticker {
+    overflow: hidden; white-space: nowrap;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--cyan));
+    color: #000; padding: 10px 0; margin: 18px 0;
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 2px;
+  }
+  .ticker-track { display: inline-block; animation: scrollx 22s linear infinite; }
+  .ticker-track span { margin: 0 30px; }
+  @keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION */
+  main { max-width: 1400px; margin: 0 auto; padding: 28px 22px 80px; }
+  .section-head {
+    display: flex; align-items: center; gap: 14px; margin: 38px 0 20px; flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: 'Orbitron', sans-serif; font-weight: 900;
+    font-size: clamp(1.4rem, 4vw, 2.2rem); letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--cyan), var(--pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .section-head .line { flex: 1 1 auto; height: 2px; background: linear-gradient(90deg, var(--pink), transparent); }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .filter-btn {
+    background: rgba(255,255,255,0.05); color: var(--muted);
+    border: 1px solid rgba(155,61,255,0.35); cursor: pointer;
+    padding: 7px 16px; border-radius: 999px; font-family: 'Rajdhani', sans-serif; font-weight: 600;
+    font-size: 0.95rem; letter-spacing: 0.5px; transition: all 0.2s;
+  }
+  .filter-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+  .filter-btn.active {
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: var(--white); border-color: transparent;
+    box-shadow: var(--shadow-pink);
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    position: relative; background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 30px rgba(0,232,255,0.35);
+  }
+  .card-media {
+    position: relative; aspect-ratio: 4/3; overflow: hidden; background: #000;
+  }
+  .card-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s;
+  }
+  .card:hover .card-media img { transform: scale(1.08); }
+  .badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--yellow); color: #000;
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.7rem; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 6px;
+    box-shadow: 0 0 14px rgba(255,230,0,0.7);
+  }
+  .tag {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.65); color: var(--cyan);
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 6px; backdrop-filter: blur(4px);
+    border: 1px solid rgba(0,232,255,0.4);
+  }
+  .card-body { padding: 14px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+  .card-body h3 {
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.08rem; line-height: 1.2;
+    margin-bottom: 6px; color: var(--white);
+  }
+  .card-body .desc {
+    font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .price-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .price-row .old { color: rgba(255,255,255,0.45); text-decoration: line-through; font-size: 0.85rem; }
+  .price-row .price {
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.3rem;
+    color: var(--green); text-shadow: 0 0 14px rgba(43,255,136,0.4);
+  }
+  .cta-row { display: flex; gap: 8px; }
+  .btn-add, .btn-buy {
+    flex: 1; cursor: pointer; border: none; border-radius: 10px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem;
+    padding: 9px 6px; transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-add {
+    background: rgba(0,232,255,0.12); color: var(--cyan);
+    border: 1px solid rgba(0,232,255,0.45);
+  }
+  .btn-add:hover { background: rgba(0,232,255,0.22); box-shadow: var(--shadow-cyan); transform: translateY(-1px); }
+  .btn-buy {
+    background: linear-gradient(90deg, var(--pink), var(--orange)); color: var(--white);
+    box-shadow: 0 0 16px rgba(255,45,135,0.4);
+  }
+  .btn-buy:hover { transform: translateY(-1px); box-shadow: 0 0 24px rgba(255,138,30,0.7); }
+
+  /* HERO CARD highlight */
+  .card.hero-card {
+    grid-column: span 2;
+    border: 1px solid var(--orange);
+    box-shadow: 0 0 30px rgba(255,138,30,0.4);
+  }
+  .card.hero-card .card-media { aspect-ratio: 16/9; }
+  .card.hero-card h3 { font-size: 1.4rem; }
+  .tag-hero {
+    position: absolute; top: 10px; right: 10px;
+    background: linear-gradient(90deg, var(--pink), var(--orange));
+    color: var(--white);
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 0.8rem; letter-spacing: 1px;
+    padding: 5px 12px; border-radius: 6px;
+    box-shadow: 0 0 18px rgba(255,45,135,0.7);
+  }
+
+  /* CART DRAWER */
+  .drawer-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity 0.25s; z-index: 100;
+  }
+  .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(420px, 100%);
+    background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
+    border-left: 1px solid rgba(255,45,135,0.4);
+    transform: translateX(100%); transition: transform 0.3s ease; z-index: 101;
+    display: flex; flex-direction: column;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.7);
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head {
+    padding: 18px 22px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,45,135,0.25);
+  }
+  .drawer-head h3 {
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.2rem;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .drawer-close {
+    background: rgba(255,45,135,0.15); border: 1px solid rgba(255,45,135,0.4);
+    color: var(--white); cursor: pointer; width: 34px; height: 34px; border-radius: 8px;
+    font-size: 1.1rem; transition: background 0.2s;
+  }
+  .drawer-close:hover { background: rgba(255,45,135,0.35); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 14px 18px; }
+  .cart-empty { text-align: center; color: var(--muted); margin-top: 60px; font-family: 'Rajdhani', sans-serif; }
+  .cart-item {
+    display: grid; grid-template-columns: 60px 1fr auto; gap: 12px; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--card-border); }
+  .cart-item .ci-name { font-size: 0.88rem; color: var(--white); line-height: 1.2; }
+  .cart-item .ci-price { font-family: 'Orbitron', sans-serif; color: var(--green); font-size: 0.92rem; }
+  .qty { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+  .qty button {
+    width: 22px; height: 22px; border: none; border-radius: 5px; cursor: pointer;
+    background: rgba(255,255,255,0.1); color: var(--white); font-weight: 700;
+  }
+  .qty button:hover { background: var(--pink); }
+  .qty span { min-width: 22px; text-align: center; font-family: 'Orbitron', sans-serif; }
+  .ci-remove { background: none; border: none; color: var(--pink); cursor: pointer; font-size: 1.2rem; }
+  .drawer-foot {
+    padding: 18px 22px; border-top: 1px solid rgba(0,232,255,0.25);
+    background: rgba(0,0,0,0.4);
+  }
+  .total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+  .total-row .label { color: var(--muted); font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 1rem; }
+  .total-row .total {
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.5rem; color: var(--yellow);
+    text-shadow: 0 0 16px rgba(255,230,0,0.5);
+  }
+  .checkout-btn {
+    width: 100%; padding: 14px; cursor: pointer; border: none; border-radius: 12px;
+    background: linear-gradient(90deg, var(--pink), var(--orange));
+    color: var(--white); font-family: 'Orbitron', sans-serif; font-weight: 900; letter-spacing: 1.5px;
+    box-shadow: 0 0 24px rgba(255,45,135,0.5); transition: transform 0.15s;
+  }
+  .checkout-btn:hover { transform: translateY(-2px); }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(120%);
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: var(--white); padding: 14px 24px; border-radius: 12px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1rem;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 24px rgba(255,45,135,0.6);
+    z-index: 200; transition: transform 0.3s ease;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* FOOTER */
+  footer {
+    background: linear-gradient(180deg, transparent, rgba(155,61,255,0.08));
+    border-top: 1px solid rgba(155,61,255,0.25);
+    padding: 40px 22px 28px; text-align: center;
+  }
+  footer .f-logo {
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.4rem;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 8px;
+  }
+  footer p { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+  footer .pay {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px;
+  }
+  footer .pay span {
+    background: rgba(255,255,255,0.06); padding: 6px 12px; border-radius: 6px;
+    font-family: 'Orbitron', sans-serif; font-size: 0.7rem; color: var(--muted); letter-spacing: 1px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .card.hero-card { grid-column: span 1; }
+  }
+  @media (max-width: 640px) {
+    .nav { gap: 10px; }
+    nav.links { order: 3; width: 100%; justify-content: center; }
+    .search { order: 2; flex: 1 1 100%; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+    .card-body { padding: 10px 12px 14px; }
+    .card-body h3 { font-size: 0.95rem; }
+    .card-body .desc { font-size: 0.78rem; -webkit-line-clamp: 2; }
+    .price-row .price { font-size: 1.05rem; }
+    .btn-add, .btn-buy { font-size: 0.82rem; padding: 8px 4px; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <header class="top">
+    <div class="nav">
+      <div class="logo">NEXUS<span>GAMER</span></div>
+      <nav class="links">
+        <a href="#consoles">Consoles</a>
+        <a href="#jogos">Jogos</a>
+        <a href="#acessorios">Acessórios</a>
+        <a href="#destaques">Destaques</a>
+      </nav>
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Buscar games, consoles, acessórios..." aria-label="Buscar">
+      </div>
+      <button class="cart-btn" id="openCart">CARRINHO <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-kicker">★ PRÉ-VENDA OFICIAL ★</span>
+        <h1 class="hero-title">GTA VI<br>VICE CITY</h1>
+        <p class="hero-sub">O jogo mais aguardado da década chegou. Reserve já sua edição para PS5 e entre em Vice City antes de todo mundo.</p>
+        <div class="hero-price">
+          <span class="hp-now">R$ 12.999,90</span>
+          <span class="hp-old">R$ 14.999,90</span>
+        </div>
+        <div class="hero-cta">
+          <button class="btn-primary" data-buy="0">GARANTIR AGORA</button>
+          <button class="btn-ghost" data-add="0">+ ADICIONAR</button>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ffdb57a1bef.jpg" alt="Grand Theft Auto VI capa">
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>🔥 GTA VI PRÉ-VENDA ABERTA</span>
+      <span>⚡ FRETE GRÁTIS ACIMA DE R$ 299</span>
+      <span>🎮 PS5 PRO 2TB EM ESTOQUE</span>
+      <span>💎 12X SEM JUROS NO CARTÃO</span>
+      <span>🚚 ENTREGA EM 24H CAPITAIS</span>
+      <span>🔥 GTA VI PRÉ-VENDA ABERTA</span>
+      <span>⚡ FRETE GRÁTIS ACIMA DE R$ 299</span>
+      <span>🎮 PS5 PRO 2TB EM ESTOQUE</span>
+      <span>💎 12X SEM JUROS NO CARTÃO</span>
+      <span>🚚 ENTREGA EM 24H CAPITAIS</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="section-head" id="destaques">
+      <h2>CATÁLOGO COMPLETO</h2>
+      <div class="line"></div>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">Tudo</button>
+      <button class="filter-btn" data-filter="console">Consoles</button>
+      <button class="filter-btn" data-filter="jogo">Jogos</button>
+      <button class="filter-btn" data-filter="acessorio">Acessórios</button>
+    </div>
+
+    <div class="grid" id="productGrid">
+      
+    <article class="card hero-card" data-cat="jogo" data-name="Grand Theft Auto VI — Edição Vice City (PS5)" data-price="12.999,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ffdb57a1bef.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ffdb57a1bef.jpg" alt="Grand Theft Auto VI — Edição Vice City (PS5)" loading="lazy">
+        <span class="badge">HEROI</span>
+        <span class="tag-hero">LANÇAMENTO ÉPICO</span>
+      </div>
+      <div class="card-body">
+        <h3>Grand Theft Auto VI — Edição Vice City (PS5)</h3>
+        <p class="desc">Volte a Vice City. Duas protagonistas, mundo aberto colossal, física de nova geração e modo online expandido. O jogo mais aguardado da década.</p>
+        <div class="price-row">
+          <span class="old">De R$ 14.999,90</span>
+          <span class="price">R$ 12.999,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="0">+ Adicionar</button>
+          <button class="btn-buy" data-buy="0">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="console" data-name="PlayStation 5 Pro 2TB — Console" data-price="7.499,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bbaddd51810.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bbaddd51810.jpg" alt="PlayStation 5 Pro 2TB — Console" loading="lazy">
+        <span class="badge">TOP</span>
+        <span class="tag">PÓS-GEN POWER</span>
+      </div>
+      <div class="card-body">
+        <h3>PlayStation 5 Pro 2TB — Console</h3>
+        <p class="desc">GPU 67% mais rápida, upscaler PSSR com IA, ray tracing avançado e 2 TB de SSD. Edição definitiva para 4K/8K.</p>
+        <div class="price-row">
+          <span class="old">De R$ 7.999,90</span>
+          <span class="price">R$ 7.499,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="1">+ Adicionar</button>
+          <button class="btn-buy" data-buy="1">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="console" data-name="PlayStation 5 Slim 1TB — Console" data-price="3.799,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b954ec535ea2.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b954ec535ea2.jpg" alt="PlayStation 5 Slim 1TB — Console" loading="lazy">
+        <span class="badge">HOT</span>
+        <span class="tag">MAIS VENDIDO</span>
+      </div>
+      <div class="card-body">
+        <h3>PlayStation 5 Slim 1TB — Console</h3>
+        <p class="desc">Design 30% menor, suporte a drive removível, SSD 1TB ultra-rápido e GPU AMD RDNA 2 a 2.23 GHz.</p>
+        <div class="price-row">
+          <span class="old">De R$ 4.199,90</span>
+          <span class="price">R$ 3.799,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="2">+ Adicionar</button>
+          <button class="btn-buy" data-buy="2">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="console" data-name="PlayStation 5 Edição Disco — Console Original" data-price="3.499,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c9f4025b7a4d.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c9f4025b7a4d.jpg" alt="PlayStation 5 Edição Disco — Console Original" loading="lazy">
+        
+        <span class="tag">CLÁSSICO</span>
+      </div>
+      <div class="card-body">
+        <h3>PlayStation 5 Edição Disco — Console Original</h3>
+        <p class="desc">O PS5 de referência, com leitor Blu-ray 4K UHD e a linha completa de acessórios DualSense nativos.</p>
+        <div class="price-row">
+          
+          <span class="price">R$ 3.499,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="3">+ Adicionar</button>
+          <button class="btn-buy" data-buy="3">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="console" data-name="PlayStation VR2 + Gran Turismo 7 Bundle" data-price="4.299,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/655acfc612d6.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/655acfc612d6.jpg" alt="PlayStation VR2 + Gran Turismo 7 Bundle" loading="lazy">
+        <span class="badge">VR</span>
+        <span class="tag">REALIDADE VIRTUAL</span>
+      </div>
+      <div class="card-body">
+        <h3>PlayStation VR2 + Gran Turismo 7 Bundle</h3>
+        <p class="desc">OLED 4K HDR 120Hz, field of view 110°, eye tracking, feedback háptico no capacete e nos controles Sense.</p>
+        <div class="price-row">
+          <span class="old">De R$ 4.799,90</span>
+          <span class="price">R$ 4.299,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="4">+ Adicionar</button>
+          <button class="btn-buy" data-buy="4">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Controle DualSense Branco (PS5)" data-price="449,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e7e35ef47608.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e7e35ef47608.jpg" alt="Controle DualSense Branco (PS5)" loading="lazy">
+        
+        <span class="tag">GATILHO ADAPTATIVO</span>
+      </div>
+      <div class="card-body">
+        <h3>Controle DualSense Branco (PS5)</h3>
+        <p class="desc">Feedback háptico de precisão, gatilhos adaptativos L2/R2, microfone embutido e touchpad com luz dinâmica.</p>
+        <div class="price-row">
+          <span class="old">De R$ 519,90</span>
+          <span class="price">R$ 449,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="5">+ Adicionar</button>
+          <button class="btn-buy" data-buy="5">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Controle DualSense Edge Pro (PS5)" data-price="1.499,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bb8b70eb631.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bb8b70eb631.jpg" alt="Controle DualSense Edge Pro (PS5)" loading="lazy">
+        <span class="badge">PRO</span>
+        <span class="tag">PRO PLAYER</span>
+      </div>
+      <div class="card-body">
+        <h3>Controle DualSense Edge Pro (PS5)</h3>
+        <p class="desc">Sticks removíveis, perfis personalizados, dead zone ajustável e gatilhos de bloqueio traseiros. O controle do competitivo.</p>
+        <div class="price-row">
+          <span class="old">De R$ 1.699,90</span>
+          <span class="price">R$ 1.499,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="6">+ Adicionar</button>
+          <button class="btn-buy" data-buy="6">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Headset Sem Fio Pulse 3D — Branco" data-price="549,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/18bf52ff0b69.png">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/18bf52ff0b69.png" alt="Headset Sem Fio Pulse 3D — Branco" loading="lazy">
+        
+        <span class="tag">ÁUDIO 3D</span>
+      </div>
+      <div class="card-body">
+        <h3>Headset Sem Fio Pulse 3D — Branco</h3>
+        <p class="desc">Áudio 3D Temperado, microfone com cancelamento de ruído duplo e bateria de 12 horas. DualSense pronto.</p>
+        <div class="price-row">
+          <span class="old">De R$ 649,90</span>
+          <span class="price">R$ 549,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="7">+ Adicionar</button>
+          <button class="btn-buy" data-buy="7">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Pulse Explore — Fones Sem Fio" data-price="1.099,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6c7cfd273f8e.jpeg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6c7cfd273f8e.jpeg" alt="Pulse Explore — Fones Sem Fio" loading="lazy">
+        
+        <span class="tag">PLANAR</span>
+      </div>
+      <div class="card-body">
+        <h3>Pulse Explore — Fones Sem Fio</h3>
+        <p class="desc">Drivers planar de alto desempenho, conexão com PS5/PS Link de baixa latência e case com carga rápida.</p>
+        <div class="price-row">
+          <span class="old">De R$ 1.199,90</span>
+          <span class="price">R$ 1.099,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="8">+ Adicionar</button>
+          <button class="btn-buy" data-buy="8">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Estação de Carregamento DualSense" data-price="249,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cc8095988f15.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cc8095988f15.jpg" alt="Estação de Carregamento DualSense" loading="lazy">
+        
+        <span class="tag">DOCK</span>
+      </div>
+      <div class="card-body">
+        <h3>Estação de Carregamento DualSense</h3>
+        <p class="desc">Carregue dois controles DualSense simultaneamente em ~2 horas. Design vertical elegante combinando com o PS5.</p>
+        <div class="price-row">
+          <span class="old">De R$ 299,90</span>
+          <span class="price">R$ 249,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="9">+ Adicionar</button>
+          <button class="btn-buy" data-buy="9">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="SSD M.2 2TB Western Digital SN850X — PS5" data-price="1.299,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dc0c8dfca98f.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dc0c8dfca98f.jpg" alt="SSD M.2 2TB Western Digital SN850X — PS5" loading="lazy">
+        
+        <span class="tag">EXPANSÃO 2TB</span>
+      </div>
+      <div class="card-body">
+        <h3>SSD M.2 2TB Western Digital SN850X — PS5</h3>
+        <p class="desc">Leitura de 7.300 MB/s, dissipador gráfico integrado, compatível oficial com PS5. Multiplique sua biblioteca.</p>
+        <div class="price-row">
+          <span class="old">De R$ 1.499,90</span>
+          <span class="price">R$ 1.299,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="10">+ Adicionar</button>
+          <button class="btn-buy" data-buy="10">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Controle Remoto de Mídia PS5" data-price="149,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8684a87deab5.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8684a87deab5.jpg" alt="Controle Remoto de Mídia PS5" loading="lazy">
+        
+        <span class="tag">TV</span>
+      </div>
+      <div class="card-body">
+        <h3>Controle Remoto de Mídia PS5</h3>
+        <p class="desc">Botões dedicados de streaming, iluminação e TV. Conexão Bluetooth ou USB para o seu PS5.</p>
+        <div class="price-row">
+          <span class="old">De R$ 189,90</span>
+          <span class="price">R$ 149,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="11">+ Adicionar</button>
+          <button class="btn-buy" data-buy="11">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Câmera HD para PS5" data-price="399,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cd1c21ad2247.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cd1c21ad2247.jpg" alt="Câmera HD para PS5" loading="lazy">
+        
+        <span class="tag">1080p</span>
+      </div>
+      <div class="card-body">
+        <h3>Câmera HD para PS5</h3>
+        <p class="desc">Captação 1080p a 60fps para transmissões, fundo do Picture-in-Picture e tracking do PS VR2.</p>
+        <div class="price-row">
+          <span class="old">De R$ 449,90</span>
+          <span class="price">R$ 399,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="12">+ Adicionar</button>
+          <button class="btn-buy" data-buy="12">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Suporte Vertical Oficial PS5 Slim" data-price="99,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2336ad59080b.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2336ad59080b.jpg" alt="Suporte Vertical Oficial PS5 Slim" loading="lazy">
+        
+        <span class="tag">STAND</span>
+      </div>
+      <div class="card-body">
+        <h3>Suporte Vertical Oficial PS5 Slim</h3>
+        <p class="desc">Soporte vertical premium, fácil instalação e design integrado ao console PS5 Slim ou Pro.</p>
+        <div class="price-row">
+          <span class="old">De R$ 129,90</span>
+          <span class="price">R$ 99,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="13">+ Adicionar</button>
+          <button class="btn-buy" data-buy="13">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="acessorio" data-name="Drive de Disco Ultra Slim PS5 (Anexo)" data-price="699,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/64074e4b9a19.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/64074e4b9a19.jpg" alt="Drive de Disco Ultra Slim PS5 (Anexo)" loading="lazy">
+        
+        <span class="tag">BLU-RAY 4K</span>
+      </div>
+      <div class="card-body">
+        <h3>Drive de Disco Ultra Slim PS5 (Anexo)</h3>
+        <p class="desc">Anexo Blu-ray 4K Ultra HD para o PS5 Slim Digital. Instalação simples, sem comprometer o design slim.</p>
+        <div class="price-row">
+          <span class="old">De R$ 799,90</span>
+          <span class="price">R$ 699,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="14">+ Adicionar</button>
+          <button class="btn-buy" data-buy="14">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Marvel’s Spider-Man 2 (PS5)" data-price="299,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d28947667892.jpeg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d28947667892.jpeg" alt="Marvel’s Spider-Man 2 (PS5)" loading="lazy">
+        
+        <span class="tag">EXCLUSIVO PS5</span>
+      </div>
+      <div class="card-body">
+        <h3>Marvel’s Spider-Man 2 (PS5)</h3>
+        <p class="desc">Peter Parker e Miles Morales unidos em uma Nova York ampliada. Combate aéreo fluido, simbionte e Venom.</p>
+        <div class="price-row">
+          <span class="old">De R$ 399,90</span>
+          <span class="price">R$ 299,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="15">+ Adicionar</button>
+          <button class="btn-buy" data-buy="15">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="God of War Ragnarök (PS5)" data-price="219,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/72d7f31529f0.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/72d7f31529f0.jpg" alt="God of War Ragnarök (PS5)" loading="lazy">
+        
+        <span class="tag">GAME OF THE YEAR</span>
+      </div>
+      <div class="card-body">
+        <h3>God of War Ragnarök (PS5)</h3>
+        <p class="desc">Kratos e Atreus cruzam os Nove Reinos nórdicos rumo ao Ragnarök. Brutal, cinematográfico, emocional.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 219,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="16">+ Adicionar</button>
+          <button class="btn-buy" data-buy="16">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Horizon Forbidden West — Complete Edition (PS5)" data-price="179,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8253d32e4bde.png">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8253d32e4bde.png" alt="Horizon Forbidden West — Complete Edition (PS5)" loading="lazy">
+        
+        <span class="tag">OPEN WORLD</span>
+      </div>
+      <div class="card-body">
+        <h3>Horizon Forbidden West — Complete Edition (PS5)</h3>
+        <p class="desc">Aloy desce ao Oeste Proibido. Máquinas colossais, mergulho subaquático e história brutalmente bonita.</p>
+        <div class="price-row">
+          <span class="old">De R$ 299,90</span>
+          <span class="price">R$ 179,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="17">+ Adicionar</button>
+          <button class="btn-buy" data-buy="17">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Demon’s Souls Remake (PS5)" data-price="199,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d9f86d2e9576.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d9f86d2e9576.jpg" alt="Demon’s Souls Remake (PS5)" loading="lazy">
+        
+        <span class="tag">BLUEPOINT</span>
+      </div>
+      <div class="card-body">
+        <h3>Demon’s Souls Remake (PS5)</h3>
+        <p class="desc">Remake integral em 4K/60fps do clássico que fundou o soulslike. Visual de nova geração, desafio clássico.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 199,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="18">+ Adicionar</button>
+          <button class="btn-buy" data-buy="18">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Final Fantasy XVI (PS5)" data-price="249,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d4100b9eaf63.png">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d4100b9eaf63.png" alt="Final Fantasy XVI (PS5)" loading="lazy">
+        
+        <span class="tag">FF16</span>
+      </div>
+      <div class="card-body">
+        <h3>Final Fantasy XVI (PS5)</h3>
+        <p class="desc">A saga sombria de Clive Rosfield. Combate action-RPG, Eikons colossais e QTE cinematográficos de tirar o fôlego.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 249,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="19">+ Adicionar</button>
+          <button class="btn-buy" data-buy="19">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Astro Bot (PS5)" data-price="269,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e3140d621cd0.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e3140d621cd0.jpg" alt="Astro Bot (PS5)" loading="lazy">
+        
+        <span class="tag">PLATAFORMA</span>
+      </div>
+      <div class="card-body">
+        <h3>Astro Bot (PS5)</h3>
+        <p class="desc">Plataforma 3D puro jogo, usando tudo do DualSense. 80 fases, 15 galáxias e a homenagem perfeita à história do PlayStation.</p>
+        <div class="price-row">
+          <span class="old">De R$ 329,90</span>
+          <span class="price">R$ 269,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="20">+ Adicionar</button>
+          <button class="btn-buy" data-buy="20">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="EA Sports FC 25 (PS5)" data-price="279,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7d1008bb211c.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7d1008bb211c.jpg" alt="EA Sports FC 25 (PS5)" loading="lazy">
+        
+        <span class="tag">FUT</span>
+      </div>
+      <div class="card-body">
+        <h3>EA Sports FC 25 (PS5)</h3>
+        <p class="desc">O sucessor do FIFA. Rush 5×5, novos fundamentos de jogadores e modo carreira aprofundado com IA melhorada.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 279,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="21">+ Adicionar</button>
+          <button class="btn-buy" data-buy="21">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Gran Turismo 7 (PS5)" data-price="199,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/595f2a56a2f3.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/595f2a56a2f3.jpg" alt="Gran Turismo 7 (PS5)" loading="lazy">
+        
+        <span class="tag">REAL DRIVING SIM</span>
+      </div>
+      <div class="card-body">
+        <h3>Gran Turismo 7 (PS5)</h3>
+        <p class="desc">Mais de 500 carros, ray tracing, áudio 3D Temperado e força háptico no DualSense para cada superfície e freada.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 199,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="22">+ Adicionar</button>
+          <button class="btn-buy" data-buy="22">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Hogwarts Legacy — Edição Deluxe (PS5)" data-price="229,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2f95dcec47af.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2f95dcec47af.jpg" alt="Hogwarts Legacy — Edição Deluxe (PS5)" loading="lazy">
+        
+        <span class="tag">OPEN WORLD</span>
+      </div>
+      <div class="card-body">
+        <h3>Hogwarts Legacy — Edição Deluxe (PS5)</h3>
+        <p class="desc">Viva o século XIX em Hogwarts. Crie seu bruxo, frequente aulas, domine magias e desvende o passado mágico antigo.</p>
+        <div class="price-row">
+          <span class="old">De R$ 349,90</span>
+          <span class="price">R$ 229,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="23">+ Adicionar</button>
+          <button class="btn-buy" data-buy="23">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Call of Duty: Black Ops 6 (PS5)" data-price="349,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f45cefeac312.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f45cefeac312.jpg" alt="Call of Duty: Black Ops 6 (PS5)" loading="lazy">
+        
+        <span class="tag">FPS</span>
+      </div>
+      <div class="card-body">
+        <h3>Call of Duty: Black Ops 6 (PS5)</h3>
+        <p class="desc">Campanha, Multiplayer e Zumbis renovados. Omni-movimento, modo Guerra e novas armas para o meta competitivo.</p>
+        <div class="price-row">
+          <span class="old">De R$ 399,90</span>
+          <span class="price">R$ 349,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="24">+ Adicionar</button>
+          <button class="btn-buy" data-buy="24">Comprar</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="jogo" data-name="Elden Ring (PS5)" data-price="199,90" data-img="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/660f4d369929.jpg">
+      <div class="card-media">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/660f4d369929.jpg" alt="Elden Ring (PS5)" loading="lazy">
+        
+        <span class="tag">GOTY 2022</span>
+      </div>
+      <div class="card-body">
+        <h3>Elden Ring (PS5)</h3>
+        <p class="desc">A obra-prima da FromSoftware em mundo aberto. As Terras Intermédias, mitologia de Martin/Miyazaki e chefes inesquecíveis.</p>
+        <div class="price-row">
+          <span class="old">De R$ 299,90</span>
+          <span class="price">R$ 199,90</span>
+        </div>
+        <div class="cta-row">
+          <button class="btn-add" data-add="25">+ Adicionar</button>
+          <button class="btn-buy" data-buy="25">Comprar</button>
+        </div>
+      </div>
+    </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="f-logo">NEXUS GAMER</div>
+    <p>A loja gamer mais épica do Brasil · PlayStation 5 · Jogos · Acessórios · GTA VI</p>
+    <p>Atendimento: contato@nexusgamer.com.br · CNPJ: 00.000.000/0001-00 · São Paulo / SP</p>
+    <div class="pay">
+      <span>VISA</span><span>MASTER</span><span>ELO</span><span>PIX</span><span>BOLETO</span><span>12X</span>
+    </div>
+    <p style="margin-top:14px; opacity:0.55; font-size:0.78rem;">© 2026 Nexus Gamer. PlayStation, PS5 e GTA são marcas de seus respectivos donos. Preços sujeitos a alteração.</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrinho de compras">
+    <div class="drawer-head">
+      <h3>SEU CARRINHO</h3>
+      <button class="drawer-close" id="closeCart" aria-label="Fechar">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Seu carrinho está vazio.<br>Adicione jogos, consoles ou acessórios!</div>
+    </div>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span class="label">Total</span>
+        <span class="total" id="cartTotal">R$ 0,00</span>
+      </div>
+      <button class="checkout-btn" id="checkout">FINALIZAR COMPRA</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast">Produto adicionado ao carrinho 🎮</div>
+
+  <script>
+    const PRODUCTS = [
+  {
+    "name": "Grand Theft Auto VI — Edição Vice City (PS5)",
+    "price": "12.999,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/0ffdb57a1bef.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "PlayStation 5 Pro 2TB — Console",
+    "price": "7.499,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bbaddd51810.jpg",
+    "cat": "console"
+  },
+  {
+    "name": "PlayStation 5 Slim 1TB — Console",
+    "price": "3.799,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b954ec535ea2.jpg",
+    "cat": "console"
+  },
+  {
+    "name": "PlayStation 5 Edição Disco — Console Original",
+    "price": "3.499,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c9f4025b7a4d.jpg",
+    "cat": "console"
+  },
+  {
+    "name": "PlayStation VR2 + Gran Turismo 7 Bundle",
+    "price": "4.299,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/655acfc612d6.jpg",
+    "cat": "console"
+  },
+  {
+    "name": "Controle DualSense Branco (PS5)",
+    "price": "449,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e7e35ef47608.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Controle DualSense Edge Pro (PS5)",
+    "price": "1.499,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6bb8b70eb631.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Headset Sem Fio Pulse 3D — Branco",
+    "price": "549,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/18bf52ff0b69.png",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Pulse Explore — Fones Sem Fio",
+    "price": "1.099,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/6c7cfd273f8e.jpeg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Estação de Carregamento DualSense",
+    "price": "249,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cc8095988f15.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "SSD M.2 2TB Western Digital SN850X — PS5",
+    "price": "1.299,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/dc0c8dfca98f.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Controle Remoto de Mídia PS5",
+    "price": "149,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8684a87deab5.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Câmera HD para PS5",
+    "price": "399,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/cd1c21ad2247.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Suporte Vertical Oficial PS5 Slim",
+    "price": "99,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2336ad59080b.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Drive de Disco Ultra Slim PS5 (Anexo)",
+    "price": "699,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/64074e4b9a19.jpg",
+    "cat": "acessorio"
+  },
+  {
+    "name": "Marvel’s Spider-Man 2 (PS5)",
+    "price": "299,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d28947667892.jpeg",
+    "cat": "jogo"
+  },
+  {
+    "name": "God of War Ragnarök (PS5)",
+    "price": "219,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/72d7f31529f0.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Horizon Forbidden West — Complete Edition (PS5)",
+    "price": "179,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8253d32e4bde.png",
+    "cat": "jogo"
+  },
+  {
+    "name": "Demon’s Souls Remake (PS5)",
+    "price": "199,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d9f86d2e9576.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Final Fantasy XVI (PS5)",
+    "price": "249,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d4100b9eaf63.png",
+    "cat": "jogo"
+  },
+  {
+    "name": "Astro Bot (PS5)",
+    "price": "269,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/e3140d621cd0.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "EA Sports FC 25 (PS5)",
+    "price": "279,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7d1008bb211c.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Gran Turismo 7 (PS5)",
+    "price": "199,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/595f2a56a2f3.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Hogwarts Legacy — Edição Deluxe (PS5)",
+    "price": "229,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/2f95dcec47af.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Call of Duty: Black Ops 6 (PS5)",
+    "price": "349,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f45cefeac312.jpg",
+    "cat": "jogo"
+  },
+  {
+    "name": "Elden Ring (PS5)",
+    "price": "199,90",
+    "img": "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/660f4d369929.jpg",
+    "cat": "jogo"
+  }
+];
+    const cart = [];
+
+    function fmtBRL(v) {
+      // v comes like "12.999,90" — keep as-is since already formatted
+      return 'R$ ' + v;
+    }
+    function parseBRL(v) {
+      // "12.999,90" -> 12999.90
+      return parseFloat(v.replace(/\./g, '').replace(',', '.'));
+    }
+    function addToCart(i) {
+      const p = PRODUCTS[i];
+      const existing = cart.find(c => c.name === p.name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
+      updateCart();
+      showToast(p.name + ' adicionado!');
+    }
+    function buyNow(i) {
+      addToCart(i);
+      openCart();
+    }
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      updateCart();
+    }
+    function changeQty(idx, delta) {
+      cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+      updateCart();
+    }
+    function updateCart() {
+      const count = cart.reduce((s, c) => s + c.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+      const itemsEl = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '<div class="cart-empty">Seu carrinho está vazio.<br>Adicione jogos, consoles ou acessórios!</div>';
+      } else {
+        itemsEl.innerHTML = cart.map((c, idx) => `
+          <div class="cart-item">
+            <img src="${c.img}" alt="${c.name}">
+            <div>
+              <div class="ci-name">${c.name}</div>
+              <div class="ci-price">R$ ${c.price}</div>
+              <div class="qty">
+                <button onclick="changeQty(${idx}, -1)">−</button>
+                <span>${c.qty}</span>
+                <button onclick="changeQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+            <button class="ci-remove" onclick="removeFromCart(${idx})">✕</button>
+          </div>
+        `).join('');
+      }
+      const total = cart.reduce((s, c) => s + parseBRL(c.price) * c.qty, 0);
+      document.getElementById('cartTotal').textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function openCart() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('overlay').classList.add('open');
+    }
+    function closeCart() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
+    }
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    document.getElementById('openCart').addEventListener('click', openCart);
+    document.getElementById('closeCart').addEventListener('click', closeCart);
+    document.getElementById('overlay').addEventListener('click', closeCart);
+    document.getElementById('checkout').addEventListener('click', () => {
+      if (cart.length === 0) {
+        showToast('Adicione produtos antes de finalizar!');
+        return;
+      }
+      showToast('Pedido enviado! Em breve você receberá o e-mail de confirmação 🎉');
+      setTimeout(() => { cart.length = 0; updateCart(); closeCart(); }, 2400);
+    });
+
+    // Bind add/buy buttons (including hero CTA)
+    document.querySelectorAll('[data-add]').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(parseInt(btn.getAttribute('data-add'))));
+    });
+    document.querySelectorAll('[data-buy]').forEach(btn => {
+      btn.addEventListener('click', () => buyNow(parseInt(btn.getAttribute('data-buy'))));
+    });
+
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-filter');
+        document.querySelectorAll('#productGrid .card').forEach(card => {
+          if (f === 'all' || card.getAttribute('data-cat') === f) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      document.querySelectorAll('#productGrid .card').forEach(card => {
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        card.style.display = (!q || name.includes(q)) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
